@@ -339,7 +339,7 @@ server <- function(input, output, session) {
     # Create leaflet
     pal <- colorBin(colorRamp(c("Blue","White","Red")), domain = Map1$variableplot,
                     bins = 7)
-    labels <- sprintf("%s: %g",Map1@data$Districts , Map1$variableplot) %>%
+    labels <- sprintf("%s: %g",as.character(as.matrix(Map1@data[input$AreaCass])) , Map1$variableplot) %>%
       lapply(htmltools::HTML)
     
     leaflet(Map1) %>%
