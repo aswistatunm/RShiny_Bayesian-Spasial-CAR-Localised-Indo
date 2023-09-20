@@ -260,11 +260,11 @@ server <- function(input, output, session) {
     }
     Model=rbind(Gr[[1]],Gr[[2]],Gr[[3]],Gr[[4]],Gr[[5]])
     colnames(Model) = c("G","DIC","WAIC","MMI")
-    row.names(Model) = c(rep("IG (1;0,01)",3),
-                         rep("IG (1;0,1)",3),
-                         rep("IG (0,1;0,1)",3),
-                         rep("IG (0,5;0,05)",3),
-                         rep("IG (0,5;0,0005)",3))
+    row.names(Model) = c(rep("IG (1, 0.01)",3),
+                         rep("IG (1, 0.1)",3),
+                         rep("IG (0.1, 0.1)",3),
+                         rep("IG (0.5, 0.05)",3),
+                         rep("IG (0.5, 0.0005)",3))
     Model
   })
   
