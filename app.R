@@ -299,8 +299,18 @@ server <- function(input, output, session) {
     Data4 <- Kasus()
     Data5 <- Datafix()
     Map1 = Map
-    Data5$RR   <- round(ModelLocal()$fitted.values/Data4$Exp,2)
     Data5$Grup <- ModelLocal()$localised.structure
+    Data5$RR   <- round(ModelLocal()$fitted.values/Data4$Exp,2)
+    m = ModelLocal()$samples$fitted
+    h = matrix(0,nrow=ncol(m),ncol =3 ,byrow = TRUE)
+    colnames(h) = c(1,2,3)
+    for (d in 1:ncol(m)) {
+      h[d,1] = round(mean(m[,d])/Data4$Exp[d],3)
+      h[d,2] = round(quantile(m[,d],0.025)/Data4$Exp[d],3)
+      h[d,3] = round(quantile(m[,d],0.975)/Data4$Exp[d],3)
+    }
+    h
+    Data5$Cridible_Interval = paste0("(",h[,2],",",h[,3],")")
     Map1@data  <- Data5
     Map1
   }) 
