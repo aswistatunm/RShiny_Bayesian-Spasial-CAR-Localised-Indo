@@ -310,7 +310,7 @@ server <- function(input, output, session) {
       h[d,3] = round(quantile(m[,d],0.975)/Data4$Exp[d],3)
     }
     h
-    Data5$Cridible_Interval = paste0("(",h[,2],",",h[,3],")")
+    Data5$Credible_Interval = paste0("(",h[,2],",",h[,3],")")
     Map1@data  <- Data5
     Map1
   }) 
@@ -345,7 +345,7 @@ server <- function(input, output, session) {
     # Create variableplot
     Map1$variableplot <- as.numeric(
       Map1@data$RR)
-    Map1$CI <- as.character(as.matrix(Map1@data$Cridible_Interval))
+    Map1$CI <- as.character(as.matrix(Map1@data$Credible_Interval))
     # Create leaflet
     pal <- colorBin(colorRamp(c("Blue","White","Red")), domain = Map1$variableplot,
                     bins = 7)
