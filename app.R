@@ -345,11 +345,11 @@ server <- function(input, output, session) {
     # Create variableplot
     Map1$variableplot <- as.numeric(
       Map1@data$RR)
-    
+    Map1$CI <- as.character(as.matrix(Map1@data$Cridible_Interval))
     # Create leaflet
     pal <- colorBin(colorRamp(c("Blue","White","Red")), domain = Map1$variableplot,
                     bins = 7)
-    labels <- sprintf("%s: %g",as.character(as.matrix(Map1@data[input$AreaCass])) , Map1$variableplot) %>%
+    labels <- sprintf("%s: %g %s",as.character(as.matrix(Map1@data[input$AreaCass])) , Map1$variableplot, Map1$CI) %>%
       lapply(htmltools::HTML)
     
     leaflet(Map1) %>%
