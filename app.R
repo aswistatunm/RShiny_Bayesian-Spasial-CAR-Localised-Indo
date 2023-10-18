@@ -300,7 +300,7 @@ server <- function(input, output, session) {
     Data5 <- Datafix()
     Map1 = Map
     Data5$Grup <- ModelLocal()$localised.structure
-    Data5$RR   <- round(ModelLocal()$fitted.values/Data4$Exp,2)
+    Data5$RR   <- round(ModelLocal()$fitted.values/Data4$Exp,3)
     m = ModelLocal()$samples$fitted
     h = matrix(0,nrow=ncol(m),ncol =3 ,byrow = TRUE)
     colnames(h) = c(1,2,3)
