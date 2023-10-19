@@ -310,7 +310,7 @@ server <- function(input, output, session) {
       h[d,3] = round(quantile(m[,d],0.975)/Data4$Exp[d],3)
     }
     h
-    Data5$Credible_Interval = paste0("(",h[,2],",",h[,3],")")
+    Data5$Credible_Interval = paste("(",h[,2],",",h[,3],")")
     Map1@data  <- Data5
     Map1
   }) 
